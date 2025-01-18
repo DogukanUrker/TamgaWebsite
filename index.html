@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamga - Modern Python Logging Utility</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Tamga - Modern Python Logging Utility">
+    <meta name="description" content="A powerful, async-capable logging utility with multiple output formats, colorful console output, and extensive customization options.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dogukanurker.github.io/Tamga/">
+    <meta property="og:title" content="Tamga - Modern Python Logging Utility">
+    <meta property="og:description" content="A powerful, async-capable logging utility with multiple output formats, colorful console output, and extensive customization options.">
+    <meta property="og:image" content="YOUR_OG_IMAGE_URL_HERE">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dogukanurker.github.io/Tamga/">
+    <meta property="twitter:title" content="Tamga - Modern Python Logging Utility">
+    <meta property="twitter:description" content="A powerful, async-capable logging utility with multiple output formats, colorful console output, and extensive customization options.">
+    <meta property="twitter:image" content="YOUR_OG_IMAGE_URL_HERE">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vercel-dark': '#000',
+                        'vercel-gray': '#111111',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-vercel-dark text-white antialiased selection:bg-white/10">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-vercel-dark/50 backdrop-blur-xl border-b border-white/[0.1] z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold">Tamga</a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#features" class="text-sm text-white/70 hover:text-white transition-colors">Features</a>
+                    <a href="#docs" class="text-sm text-white/70 hover:text-white transition-colors">Documentation</a>
+                    <a href="https://github.com/dogukanurker/Tamga" class="flex items-center gap-2 px-4 py-1.5 text-sm rounded-lg bg-white text-black hover:bg-white/90 transition-colors">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 px-4 overflow-hidden">
+        <div class="absolute inset-0 -z-10 h-full w-full bg-vercel-dark">
+            <div class="absolute h-full w-full bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        </div>
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="relative">
+                <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-40 h-40 bg-[#7C3AED] rounded-full blur-[100px] opacity-20"></div>
+                <h1 class="relative text-5xl sm:text-6xl font-bold mb-8">
+                    Modern Python Logging
+                </h1>
+            </div>
+            <p class="text-lg sm:text-xl text-white/60 mb-12 max-w-2xl mx-auto">
+                A powerful, async-capable logging utility with multiple output formats, colorful console output, and extensive customization options.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#docs" class="px-6 py-2 rounded-lg bg-white text-black hover:bg-white/90 transition-colors text-sm font-medium">
+                    Get Started
+                </a>
+                <a href="https://pypi.org/project/tamga" class="px-6 py-2 rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors text-sm font-medium">
+                    PyPI Package
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">
+                Powerful Features
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300">
+                    <div class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">🎨</div>
+                    <h3 class="text-lg font-semibold mb-2">Colorful Output</h3>
+                    <p class="text-white/60 text-sm">Beautiful console logs with Tailwind CSS color palette for enhanced readability.</p>
+                </div>
+                <div class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300">
+                    <div class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">⚡</div>
+                    <h3 class="text-lg font-semibold mb-2">Async Support</h3>
+                    <p class="text-white/60 text-sm">Built-in async/await capabilities for high-performance logging operations.</p>
+                </div>
+                <div class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300">
+                    <div class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">📁</div>
+                    <h3 class="text-lg font-semibold mb-2">Multiple Formats</h3>
+                    <p class="text-white/60 text-sm">Support for File, JSON, SQLite, and MongoDB logging out of the box.</p>
+                </div>
+                <div class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300">
+                    <div class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">📧</div>
+                    <h3 class="text-lg font-semibold mb-2">Email Alerts</h3>
+                    <p class="text-white/60 text-sm">Automated email notifications for critical events and custom log levels.</p>
+                </div>
+                <div class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300">
+                    <div class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">🔄</div>
+                    <h3 class="text-lg font-semibold mb-2">Auto Rotation</h3>
+                    <p class="text-white/60 text-sm">Automatic file rotation and backup when size limits are reached.</p>
+                </div>
+                <div class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300">
+                    <div class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity">🌐</div>
+                    <h3 class="text-lg font-semibold mb-2">API Integration</h3>
+                    <p class="text-white/60 text-sm">Send logs to remote endpoints with built-in API support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Examples Section -->
+    <section id="docs" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">
+                Quick Start & Examples
+            </h2>
+            
+            <!-- Code Tabs -->
+            <div class="mb-8 flex flex-wrap gap-2">
+                <button onclick="showTab('basic')" class="tab-btn active px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors" data-tab="basic">
+                    Basic Usage
+                </button>
+                <button onclick="showTab('mongodb')" class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors" data-tab="mongodb">
+                    MongoDB
+                </button>
+                <button onclick="showTab('email')" class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors" data-tab="email">
+                    Email
+                </button>
+                <button onclick="showTab('rotation')" class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors" data-tab="rotation">
+                    Rotation
+                </button>
+                <button onclick="showTab('api')" class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors" data-tab="api">
+                    API
+                </button>
+            </div>
+
+            <!-- Code Blocks -->
+            <div class="relative">
+                <div id="basic" class="tab-content active">
+                    <div class="relative group">
+                        <button onclick="copyCode('basic-code')" class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100">
+                            Copy
+                        </button>
+                        <pre class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"><code class="language-python" id="basic-code"># Install Tamga
+pip install tamga
+
+# Initialize logger
+from tamga import Tamga
+
+logger = Tamga(
+    logToFile=True,
+    logToJSON=True,
+    logToConsole=True
+)
+
+# Available log levels with different colors
+logger.info("Connected to database")          # Sky blue
+logger.warning("High memory usage")           # Amber
+logger.error("Connection failed")             # Rose
+logger.success("Task completed")              # Emerald
+logger.debug("Processing request")            # Indigo
+logger.critical("System overload")            # Red
+
+# Custom logging with your own color
+logger.custom("Custom event", "EVENT", "orange")</code></pre>
+                    </div>
+                </div>
+
+                <div id="mongodb" class="tab-content hidden">
+                    <div class="relative group">
+                        <button onclick="copyCode('mongodb-code')" class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100">
+                            Copy
+                        </button>
+                        <pre class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"><code class="language-python" id="mongodb-code"># MongoDB Integration
+from tamga import Tamga
+
+logger = Tamga(
+    logToMongo=True,
+    mongoURI="your_mongodb_uri",
+    mongoDatabaseName="logs_db",
+    mongoCollectionName="application_logs"
+)
+
+# Logs will be automatically stored in MongoDB
+logger.info("User logged in")
+logger.error("Database connection failed")</code></pre>
+                    </div>
+                </div>
+
+                <div id="email" class="tab-content hidden">
+                    <div class="relative group">
+                        <button onclick="copyCode('email-code')" class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100">
+                            Copy
+                        </button>
+                        <pre class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"><code class="language-python" id="email-code"># Email Notification Setup
+from tamga import Tamga
+
+logger = Tamga(
+    sendMail=True,
+    smtpServer="smtp.gmail.com",
+    smtpPort=587,
+    smtpMail="your_email@gmail.com",
+    smtpPassword="your_password",
+    smtpReceivers=["receiver@email.com"],
+    mailLevels=["CRITICAL", "ERROR"]
+)
+
+# These logs will trigger email notifications
+logger.critical("Server down!")
+logger.error("Security breach detected")</code></pre>
+                    </div>
+                </div>
+
+                <div id="rotation" class="tab-content hidden">
+                    <div class="relative group">
+                        <button onclick="copyCode('rotation-code')" class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100">
+                            Copy
+                        </button>
+                        <pre class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"><code class="language-python" id="rotation-code"># File Rotation and Backup Configuration
+from tamga import Tamga
+
+logger = Tamga(
+    logToFile=True,
+    logToJSON=True,
+    maxLogSize=10,      # Max size in MB
+    maxJsonSize=10,     # Max size in MB
+    enableBackup=True   # Auto backup when size limit reached
+)
+
+# Logs will be automatically rotated and backed up
+logger.info("Application started")
+logger.metric("CPU Usage: 75%")</code></pre>
+                    </div>
+                </div>
+
+                <div id="api" class="tab-content hidden">
+                    <div class="relative group">
+                        <button onclick="copyCode('api-code')" class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100">
+                            Copy
+                        </button>
+                        <pre class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"><code class="language-python" id="api-code"># API Integration for Remote Logging
+from tamga import Tamga
+
+logger = Tamga(
+    logToAPI=True,
+    apiURL="http://your-api.com/logs"
+)
+
+# Logs will be sent to your API endpoint
+logger.trace("User action tracked")
+logger.database("Query executed: SELECT * FROM users")</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-white/[0.1]">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-white/60">
+                Created with ❤️ by <a href="https://github.com/dogukanurker" class="text-white hover:text-white/90">Doğukan Ürker</a>
+            </p>
+            <p class="text-white/40 mt-2 text-sm">Licensed under MIT</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-white/[0.2]', 'bg-white/10');
+                btn.classList.add('border-white/[0.1]', 'bg-vercel-gray');
+            });
+            const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
+            activeBtn.classList.remove('border-white/[0.1]', 'bg-vercel-gray');
+            activeBtn.classList.add('border-white/[0.2]', 'bg-white/10');
+        }
+
+        // Code copying
+        function copyCode(elementId) {
+            const code = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        // Initialize Prism.js
+        Prism.highlightAll();
+    </script>
+</body>
+</html> 
