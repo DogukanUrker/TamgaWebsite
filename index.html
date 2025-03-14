@@ -354,7 +354,10 @@ logger.custom("Custom event", "EVENT", "orange")</code></pre>
                             </button>
                             <pre
                                 class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
-                            ><code class="language-python" id="mongodb-code"># MongoDB Integration
+                            ><code class="language-python" id="mongodb-code"># Install Tamga
+pip install tamga[mongo]
+                             
+# MongoDB Integration
 from tamga import Tamga
 
 logger = Tamga(
@@ -436,7 +439,10 @@ logger.metric("CPU Usage: 75%")</code></pre>
                             </button>
                             <pre
                                 class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
-                            ><code class="language-python" id="api-code"># API Integration for Remote Logging
+                            ><code class="language-python" id="api-code"># Install Tamga
+pip install tamga[api]
+                            
+# API Integration for Remote Logging
 from tamga import Tamga
 
 logger = Tamga(
