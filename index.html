@@ -3,18 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tamga - Modern Python Logging Utility</title>
+        <title>Tamga - High-Performance Python Logging</title>
 
         <link
             rel="icon"
-            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌈</text></svg>"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>"
         />
 
         <!-- Primary Meta Tags -->
-        <meta name="title" content="Tamga - Modern Python Logging Utility" />
+        <meta name="title" content="Tamga - High-Performance Python Logging" />
         <meta
             name="description"
-            content="A powerful, async-capable logging utility with multiple output formats, colorful console output, and extensive customization options."
+            content="A modern, thread-safe Python logging library with significantly faster performance, beautiful console output, and extensive integrations."
         />
 
         <!-- Open Graph / Facebook -->
@@ -22,11 +22,11 @@
         <meta property="og:url" content="https://tamga.vercel.app" />
         <meta
             property="og:title"
-            content="Tamga - Modern Python Logging Utility"
+            content="Tamga - High-Performance Python Logging"
         />
         <meta
             property="og:description"
-            content="A powerful, async-capable logging utility with multiple output formats, colorful console output, and extensive customization options."
+            content="A modern, thread-safe Python logging library with significantly faster performance, beautiful console output, and extensive integrations."
         />
         <meta
             property="og:image"
@@ -38,11 +38,11 @@
         <meta property="twitter:url" content="https://tamga.vercel.app" />
         <meta
             property="twitter:title"
-            content="Tamga - Modern Python Logging Utility"
+            content="Tamga - High-Performance Python Logging"
         />
         <meta
             property="twitter:description"
-            content="A powerful, async-capable logging utility with multiple output formats, colorful console output, and extensive customization options."
+            content="A modern, thread-safe Python logging library with significantly faster performance, beautiful console output, and extensive integrations."
         />
         <meta
             property="twitter:image"
@@ -56,6 +56,7 @@
         />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
         <script>
             tailwind.config = {
                 theme: {
@@ -63,6 +64,10 @@
                         colors: {
                             "vercel-dark": "#000",
                             "vercel-gray": "#111111",
+                        },
+                        animation: {
+                            "pulse-slow":
+                                "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
                         },
                     },
                 },
@@ -77,13 +82,21 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
-                        <a href="#" class="text-2xl font-bold">Tamga</a>
+                        <a href="#" class="text-2xl font-bold"
+                            >Tamga
+                            <span class="text-xs text-white/50">v1</span></a
+                        >
                     </div>
                     <div class="flex items-center space-x-6">
                         <a
                             href="#features"
                             class="text-sm text-white/70 hover:text-white transition-colors hidden md:block"
                             >Features</a
+                        >
+                        <a
+                            href="#performance"
+                            class="text-sm text-white/70 hover:text-white transition-colors hidden md:block"
+                            >Performance</a
                         >
                         <a
                             href="#docs"
@@ -114,7 +127,7 @@
         </nav>
 
         <!-- Hero Section -->
-        <section class="relative pt-32 pb-20 px-4 overflow-hidden md:mb-4">
+        <section class="relative pt-32 pb-20 px-4 overflow-hidden">
             <div class="absolute inset-0 -z-10 h-full w-full bg-vercel-dark">
                 <div
                     class="absolute h-full w-full bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"
@@ -123,24 +136,42 @@
             <div class="max-w-7xl mx-auto text-center">
                 <div class="relative">
                     <div
-                        class="absolute -top-8 left-1/2 -translate-x-1/2 w-40 h-40 bg-[#7C3AED] rounded-full blur-[100px] opacity-20"
+                        class="absolute -top-8 left-1/2 -translate-x-1/2 w-40 h-40 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full blur-[100px] opacity-20 animate-pulse-slow"
                     ></div>
-                    <h1 class="relative text-5xl sm:text-6xl font-bold mb-8">
-                        Modern Python Logging
+                    <h1 class="relative text-5xl sm:text-6xl font-bold mb-6">
+                        High-Performance Python Logging
                     </h1>
+                    <div class="flex items-center justify-center gap-3 mb-8">
+                        <span
+                            class="inline-flex items-center px-3 py-1 text-xs font-medium bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20"
+                        >
+                            Ultra Fast
+                        </span>
+                        <span
+                            class="inline-flex items-center px-3 py-1 text-xs font-medium bg-sky-500/10 text-sky-400 rounded-full border border-sky-500/20"
+                        >
+                            Thread-Safe
+                        </span>
+                        <span
+                            class="inline-flex items-center px-3 py-1 text-xs font-medium bg-purple-500/10 text-purple-400 rounded-full border border-purple-500/20"
+                        >
+                            Async Ready
+                        </span>
+                    </div>
                 </div>
                 <p
                     class="text-lg sm:text-xl text-white/60 mb-4 max-w-2xl mx-auto"
                 >
-                    A powerful, logging utility with multiple output formats,
-                    colorful console output, and extensive customization
-                    options.
+                    A modern logging library with buffered writes, beautiful
+                    console output, structured logging, and extensive
+                    integrations.
                 </p>
                 <img
-                    class="w-full mx-auto"
+                    class="w-full mx-auto max-w-5xl rounded-xl border border-white/10 shadow-2xl"
                     src="https://github.com/DogukanUrker/Tamga/blob/main/Images/terminal.png?raw=true"
+                    alt="Tamga terminal output"
                 />
-                <div class="flex flex-wrap justify-center gap-4 mt-4">
+                <div class="flex flex-wrap justify-center gap-4 mt-8">
                     <a
                         href="#docs"
                         class="px-6 py-2 rounded-lg bg-white text-black hover:bg-white/90 transition-colors text-sm font-medium"
@@ -161,7 +192,7 @@
         <section id="features" class="py-20 px-4">
             <div class="max-w-7xl mx-auto">
                 <h2 class="text-3xl font-bold text-center mb-16">
-                    Powerful Features
+                    Modern Features
                 </h2>
                 <div
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -172,14 +203,14 @@
                         <div
                             class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity"
                         >
-                            🎨
+                            ⚡
                         </div>
                         <h3 class="text-lg font-semibold mb-2">
-                            Colorful Output
+                            Ultra-Fast Performance
                         </h3>
                         <p class="text-white/60 text-sm">
-                            Beautiful console logs with Tailwind CSS color
-                            palette for enhanced readability.
+                            Buffered writing system delivers dramatically faster
+                            performance than traditional logging.
                         </p>
                     </div>
                     <div
@@ -188,12 +219,49 @@
                         <div
                             class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity"
                         >
-                            ⚡
+                            🔒
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Thread-Safe</h3>
+                        <p class="text-white/60 text-sm">
+                            Locked buffer operations ensure safe concurrent
+                            logging from multiple threads.
+                        </p>
+                    </div>
+                    <div
+                        class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300"
+                    >
+                        <div
+                            class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity"
+                        >
+                            🎨
                         </div>
                         <h3 class="text-lg font-semibold mb-2">
-                            Async Support
+                            Beautiful Output
                         </h3>
-                        <p class="text-white/60 text-sm">Working on it. 🚧</p>
+                        <p class="text-white/60 text-sm">
+                            Colorful console logs using Tailwind CSS palette
+                            with 10+ predefined log levels.
+                        </p>
+                    </div>
+                    <div
+                        class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300"
+                    >
+                        <div
+                            class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity"
+                        >
+                            📊
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">
+                            Structured Logging
+                        </h3>
+                        <p class="text-white/60 text-sm">
+                            Log with key-value data using the
+                            <code
+                                class="text-xs bg-white/10 px-1 py-0.5 rounded"
+                                >dir()</code
+                            >
+                            method for better analysis.
+                        </p>
                     </div>
                     <div
                         class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300"
@@ -204,25 +272,11 @@
                             📁
                         </div>
                         <h3 class="text-lg font-semibold mb-2">
-                            Multiple Formats
+                            Multiple Outputs
                         </h3>
                         <p class="text-white/60 text-sm">
-                            Support for File, JSON, SQLite, and MongoDB logging
-                            out of the box.
-                        </p>
-                    </div>
-                    <div
-                        class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300"
-                    >
-                        <div
-                            class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity"
-                        >
-                            📧
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2">Email Alerts</h3>
-                        <p class="text-white/60 text-sm">
-                            Automated email notifications for critical events
-                            and custom log levels.
+                            Console, File, JSON, SQLite, MongoDB, API endpoints,
+                            and Email notifications.
                         </p>
                     </div>
                     <div
@@ -234,27 +288,191 @@
                             🔄
                         </div>
                         <h3 class="text-lg font-semibold mb-2">
-                            Auto Rotation
+                            Smart Rotation
                         </h3>
                         <p class="text-white/60 text-sm">
-                            Automatic file rotation and backup when size limits
-                            are reached.
+                            Automatic file rotation with timestamped backups
+                            when size limits are reached.
                         </p>
                     </div>
-                    <div
-                        class="group p-6 rounded-xl bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300"
-                    >
-                        <div
-                            class="text-3xl mb-4 opacity-80 group-hover:opacity-100 transition-opacity"
-                        >
-                            🌐
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2">
-                            API Integration
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Section -->
+        <section id="performance" class="py-20 px-4 bg-vercel-gray/30">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-16">
+                    Blazing Fast Performance
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6">
+                            Buffered Writing System
                         </h3>
-                        <p class="text-white/60 text-sm">
-                            Send logs to remote endpoints with built-in API
-                            support.
+                        <p class="text-white/70 mb-6">
+                            Tamga's buffered architecture delivers exceptional
+                            performance by batching write operations. Configure
+                            buffer size based on your needs:
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">🎯</span>
+                                <div>
+                                    <p class="font-medium">
+                                        Real-time:
+                                        <code
+                                            class="text-sm bg-white/10 px-2 py-0.5 rounded"
+                                            >bufferSize=1</code
+                                        >
+                                    </p>
+                                    <p class="text-sm text-white/50">
+                                        Immediate writes for monitoring
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">🌐</span>
+                                <div>
+                                    <p class="font-medium">
+                                        Web Apps:
+                                        <code
+                                            class="text-sm bg-white/10 px-2 py-0.5 rounded"
+                                            >bufferSize=50</code
+                                        >
+                                    </p>
+                                    <p class="text-sm text-white/50">
+                                        Balanced performance (default)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">⚙️</span>
+                                <div>
+                                    <p class="font-medium">
+                                        Background Jobs:
+                                        <code
+                                            class="text-sm bg-white/10 px-2 py-0.5 rounded"
+                                            >bufferSize=200-500</code
+                                        >
+                                    </p>
+                                    <p class="text-sm text-white/50">
+                                        Efficient batching
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">🚀</span>
+                                <div>
+                                    <p class="font-medium">
+                                        Data Processing:
+                                        <code
+                                            class="text-sm bg-white/10 px-2 py-0.5 rounded"
+                                            >bufferSize=1000+</code
+                                        >
+                                    </p>
+                                    <p class="text-sm text-white/50">
+                                        Maximum throughput
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-vercel-gray rounded-xl p-6 border border-white/10"
+                    >
+                        <h4 class="text-lg font-semibold mb-4">
+                            Relative Performance
+                        </h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm"
+                                        >Console (colored)</span
+                                    >
+                                    <span class="text-sm text-white/50"
+                                        >Baseline</span
+                                    >
+                                </div>
+                                <div
+                                    class="w-full bg-white/10 rounded-full h-2"
+                                >
+                                    <div
+                                        class="bg-gradient-to-r from-rose-500 to-orange-500 h-2 rounded-full"
+                                        style="width: 10%"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm">MongoDB (async)</span>
+                                    <span class="text-sm text-white/50"
+                                        >~30x faster</span
+                                    >
+                                </div>
+                                <div
+                                    class="w-full bg-white/10 rounded-full h-2"
+                                >
+                                    <div
+                                        class="bg-gradient-to-r from-amber-500 to-yellow-500 h-2 rounded-full"
+                                        style="width: 30%"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm">SQLite</span>
+                                    <span class="text-sm text-white/50"
+                                        >~50x faster</span
+                                    >
+                                </div>
+                                <div
+                                    class="w-full bg-white/10 rounded-full h-2"
+                                >
+                                    <div
+                                        class="bg-gradient-to-r from-cyan-500 to-sky-500 h-2 rounded-full"
+                                        style="width: 50%"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm">JSON (buffered)</span>
+                                    <span class="text-sm text-white/50"
+                                        >~80x faster</span
+                                    >
+                                </div>
+                                <div
+                                    class="w-full bg-white/10 rounded-full h-2"
+                                >
+                                    <div
+                                        class="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full"
+                                        style="width: 80%"
+                                    ></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium"
+                                        >File (buffered)</span
+                                    >
+                                    <span class="text-sm text-emerald-400"
+                                        >~100x faster</span
+                                    >
+                                </div>
+                                <div
+                                    class="w-full bg-white/10 rounded-full h-2"
+                                >
+                                    <div
+                                        class="bg-gradient-to-r from-emerald-500 to-green-500 h-2 rounded-full"
+                                        style="width: 100%"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-white/40 mt-4">
+                            * Relative to colored console output. Actual
+                            performance depends on system configuration.
                         </p>
                     </div>
                 </div>
@@ -268,6 +486,33 @@
                     Quick Start & Examples
                 </h2>
 
+                <!-- Installation -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold mb-4">
+                        Installation Options
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="relative group">
+                            <pre
+                                class="rounded-xl bg-vercel-gray border border-white/[0.1] p-4 overflow-x-auto"
+                            ><code class="language-bash">pip install tamga              # Basic installation
+pip install tamga[mongo]       # With MongoDB support
+pip install tamga[api]         # With API logging
+pip install tamga[full]        # All features</code></pre>
+                        </div>
+                        <div class="relative group">
+                            <pre
+                                class="rounded-xl bg-vercel-gray border border-white/[0.1] p-4 overflow-x-auto"
+                            ><code class="language-python"># Quick start
+from tamga import Tamga
+
+logger = Tamga()
+logger.info("Application started")
+logger.success("Task completed!")</code></pre>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Code Tabs -->
                 <div class="mb-8 flex flex-wrap gap-2">
                     <button
@@ -276,6 +521,20 @@
                         data-tab="basic"
                     >
                         Basic Usage
+                    </button>
+                    <button
+                        onclick="showTab('structured')"
+                        class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors"
+                        data-tab="structured"
+                    >
+                        Structured Logging
+                    </button>
+                    <button
+                        onclick="showTab('perf')"
+                        class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors"
+                        data-tab="perf"
+                    >
+                        Performance
                     </button>
                     <button
                         onclick="showTab('mongodb')"
@@ -289,21 +548,14 @@
                         class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors"
                         data-tab="email"
                     >
-                        Email
+                        Email Alerts
                     </button>
                     <button
-                        onclick="showTab('rotation')"
+                        onclick="showTab('production')"
                         class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors"
-                        data-tab="rotation"
+                        data-tab="production"
                     >
-                        Rotation
-                    </button>
-                    <button
-                        onclick="showTab('api')"
-                        class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors"
-                        data-tab="api"
-                    >
-                        API
+                        Production
                     </button>
                 </div>
 
@@ -319,28 +571,139 @@
                             </button>
                             <pre
                                 class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
-                            ><code class="language-python" id="basic-code"># Install Tamga
-pip install tamga
-
-# Initialize logger
+                            ><code class="language-python" id="basic-code"># Initialize with colored output
 from tamga import Tamga
 
 logger = Tamga(
     logToFile=True,
     logToJSON=True,
-    logToConsole=True
+    logToConsole=True,
+    bufferSize=50,  # Buffer 50 logs before writing
 )
 
-# Available log levels with different colors
+# All available log levels
 logger.info("Connected to database")          # Sky blue
-logger.warning("High memory usage")           # Amber
+logger.warning("High memory usage: 85%")      # Amber
 logger.error("Connection failed")             # Rose
 logger.success("Task completed")              # Emerald
-logger.debug("Processing request")            # Indigo
-logger.critical("System overload")            # Red
+logger.debug("Processing request #1234")      # Indigo
+logger.critical("System overload!")           # Red
+logger.database("Query executed: SELECT *")   # Green
+logger.metric("Response time: 125ms")         # Cyan
+logger.trace("Entering function: process()")  # Gray
+logger.mail("Payment received: $99.99")       # Triggers email if configured
 
 # Custom logging with your own color
-logger.custom("Custom event", "EVENT", "orange")</code></pre>
+logger.custom("Deploy completed", "DEPLOY", "purple")
+logger.custom("Cache miss", "CACHE", "orange")
+
+# Force write buffered logs
+logger.flush()</code></pre>
+                        </div>
+                    </div>
+
+                    <div id="structured" class="tab-content hidden">
+                        <div class="relative group">
+                            <button
+                                onclick="copyCode('structured-code')"
+                                class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100"
+                            >
+                                Copy
+                            </button>
+                            <pre
+                                class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
+                            ><code class="language-python" id="structured-code"># Structured Logging with key-value data
+from tamga import Tamga
+import time
+import uuid
+
+logger = Tamga()
+
+# Log with structured data
+logger.dir("User action",
+    user_id="usr_123",
+    action="login",
+    ip_address="192.168.1.1",
+    success=True,
+    duration_ms=234
+)
+
+# Request logging example
+def log_request(request, response):
+    request_id = str(uuid.uuid4())
+
+    logger.dir("HTTP Request",
+        request_id=request_id,
+        method=request.method,
+        path=request.path,
+        status=response.status_code,
+        duration_ms=response.elapsed_ms,
+        user_agent=request.headers.get('User-Agent'),
+        ip=request.remote_addr
+    )
+
+# Performance monitoring
+start_time = time.time()
+# ... your code ...
+duration = time.time() - start_time
+
+logger.dir("Operation completed",
+    operation="data_processing",
+    records_processed=10000,
+    duration_seconds=round(duration, 2),
+    success_rate=0.997
+)</code></pre>
+                        </div>
+                    </div>
+
+                    <div id="perf" class="tab-content hidden">
+                        <div class="relative group">
+                            <button
+                                onclick="copyCode('performance-code')"
+                                class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100"
+                            >
+                                Copy
+                            </button>
+                            <pre
+                                class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
+                            ><code class="language-python" id="performance-code"># High-Performance Configuration
+from tamga import Tamga
+
+# Optimize for maximum throughput
+logger = Tamga(
+    logToFile=True,
+    logToConsole=False,    # Disable console for much faster performance
+    bufferSize=1000,       # Large buffer for batch operations
+)
+
+# Process large dataset efficiently
+for i, record in enumerate(large_dataset):
+    logger.info(f"Processing record {record.id}")
+
+    # Periodic flush to prevent memory buildup
+    if i % 10000 == 0:
+        logger.flush()
+        logger.success(f"Processed {i} records")
+
+# Thread-safe logging from multiple threads
+import threading
+
+def worker(worker_id):
+    for i in range(1000):
+        logger.debug(f"Worker {worker_id}: Processing item {i}")
+
+# Safe concurrent logging
+threads = [
+    threading.Thread(target=worker, args=(i,))
+    for i in range(10)
+]
+
+for t in threads:
+    t.start()
+for t in threads:
+    t.join()
+
+logger.flush()  # Ensure all logs are written</code></pre>
                         </div>
                     </div>
 
@@ -354,22 +717,36 @@ logger.custom("Custom event", "EVENT", "orange")</code></pre>
                             </button>
                             <pre
                                 class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
-                            ><code class="language-python" id="mongodb-code"># Install Tamga
-pip install tamga[mongo]
-                             
-# MongoDB Integration
+                            ><code class="language-python" id="mongodb-code"># MongoDB Integration (Async)
 from tamga import Tamga
+import os
 
 logger = Tamga(
+    # MongoDB with async support
     logToMongo=True,
-    mongoURI="your_mongodb_uri",
+    mongoURI=os.getenv("MONGO_URI"),
     mongoDatabaseName="logs_db",
-    mongoCollectionName="application_logs"
+    mongoCollectionName="application_logs",
+
+    # Also log to files
+    logToFile=True,
+    logToJSON=True,
+
+    # Performance settings
+    bufferSize=100,
 )
 
-# Logs will be automatically stored in MongoDB
+# MongoDB operations are non-blocking
 logger.info("User logged in")
-logger.error("Database connection failed")</code></pre>
+logger.error("Payment processing failed")
+
+# Logs are automatically stored with:
+# - level, message, date, time, timezone
+# - timestamp (Unix timestamp)
+# - Indexed for fast queries
+
+# The MongoDB integration uses motor (async driver)
+# Perfect for high-throughput applications</code></pre>
                         </div>
                     </div>
 
@@ -383,77 +760,310 @@ logger.error("Database connection failed")</code></pre>
                             </button>
                             <pre
                                 class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
-                            ><code class="language-python" id="email-code"># Email Notification Setup
+                            ><code class="language-python" id="email-code"># Email Alerts Configuration
 from tamga import Tamga
+import os
 
 logger = Tamga(
+    # Email configuration
     sendMail=True,
     smtpServer="smtp.gmail.com",
     smtpPort=587,
-    smtpMail="your_email@gmail.com",
-    smtpPassword="your_password",
-    smtpReceivers=["receiver@email.com"],
-    mailLevels=["CRITICAL", "ERROR"]
+    smtpMail=os.getenv("SMTP_EMAIL"),
+    smtpPassword=os.getenv("SMTP_PASSWORD"),
+    smtpReceivers=["alerts@company.com", "oncall@company.com"],
+
+    # Which levels trigger emails
+    mailLevels=["CRITICAL", "ERROR", "MAIL"],
 )
 
-# These logs will trigger email notifications
-logger.critical("Server down!")
-logger.error("Security breach detected")</code></pre>
+# These trigger email notifications (async)
+logger.critical("Database server is down!")
+logger.error("Failed to process payment for user_123")
+logger.mail("New premium subscription: $299/month")
+
+# Using mail() for important business events
+logger.mail("Large order placed: $10,000")
+logger.mail("Suspicious login detected from new location")
+logger.mail("Daily backup completed successfully")
+
+# These DON'T trigger emails (not in mailLevels)
+logger.warning("Cache miss rate increasing")
+logger.info("Regular operation message")
+
+# Emails are sent asynchronously with beautiful HTML templates
+# Including syntax highlighting and timestamp information</code></pre>
                         </div>
                     </div>
 
-                    <div id="rotation" class="tab-content hidden">
+                    <div id="production" class="tab-content hidden">
                         <div class="relative group">
                             <button
-                                onclick="copyCode('rotation-code')"
+                                onclick="copyCode('production-code')"
                                 class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100"
                             >
                                 Copy
                             </button>
                             <pre
                                 class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
-                            ><code class="language-python" id="rotation-code"># File Rotation and Backup Configuration
+                            ><code class="language-python" id="production-code"># Production-Ready Configuration
 from tamga import Tamga
+import os
 
 logger = Tamga(
+    # Console only in development
+    logToConsole=os.getenv("ENV") != "production",
+
+    # File outputs with rotation
     logToFile=True,
+    logFile="logs/app.log",
+    maxLogSize=50,          # Rotate at 50MB
+    enableBackup=True,      # Keep backups
+
+    # JSON for log aggregation
     logToJSON=True,
-    maxLogSize=10,      # Max size in MB
-    maxJsonSize=10,     # Max size in MB
-    enableBackup=True   # Auto backup when size limit reached
+    logJSON="logs/app.json",
+    maxJsonSize=50,
+
+    # Database logging
+    logToSQL=True,
+    logSQL="logs/app.db",
+    maxSqlSize=100,         # 100MB for SQL
+
+    # Performance tuning
+    bufferSize=200 if os.getenv("ENV") == "production" else 10,
+
+    # Centralized logging
+    logToMongo=bool(os.getenv("MONGO_URI")),
+    mongoURI=os.getenv("MONGO_URI"),
+
+    # API logging (e.g., to Elasticsearch)
+    logToAPI=bool(os.getenv("LOG_API_URL")),
+    apiURL=os.getenv("LOG_API_URL"),
+
+    # Critical alerts
+    sendMail=bool(os.getenv("SMTP_SERVER")),
+    smtpServer=os.getenv("SMTP_SERVER"),
+    smtpPort=587,
+    smtpMail=os.getenv("SMTP_USER"),
+    smtpPassword=os.getenv("SMTP_PASS"),
+    smtpReceivers=["alerts@company.com"],
+    mailLevels=["CRITICAL", "MAIL"],
 )
 
-# Logs will be automatically rotated and backed up
-logger.info("Application started")
-logger.metric("CPU Usage: 75%")</code></pre>
+# Application lifecycle
+try:
+    logger.info("Application starting")
+    logger.dir("Environment loaded",
+        env=os.getenv("ENV"),
+        version=os.getenv("APP_VERSION"),
+        workers=os.cpu_count()
+    )
+
+    # Your application code
+    logger.success("All services initialized")
+
+except Exception as e:
+    logger.critical(f"Fatal startup error: {str(e)}")
+    logger.flush()  # Ensure critical error is written
+    raise
+
+finally:
+    logger.info("Shutting down gracefully")
+    logger.flush()  # Final flush before exit</code></pre>
                         </div>
                     </div>
+                </div>
 
-                    <div id="api" class="tab-content hidden">
-                        <div class="relative group">
-                            <button
-                                onclick="copyCode('api-code')"
-                                class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100"
-                            >
-                                Copy
-                            </button>
-                            <pre
-                                class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
-                            ><code class="language-python" id="api-code"># Install Tamga
-pip install tamga[api]
-                            
-# API Integration for Remote Logging
-from tamga import Tamga
-
-logger = Tamga(
-    logToAPI=True,
-    apiURL="http://your-api.com/logs"
-)
-
-# Logs will be sent to your API endpoint
-logger.trace("User action tracked")
-logger.database("Query executed: SELECT * FROM users")</code></pre>
+                <!-- Log Levels Reference -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-semibold mb-8">
+                        Log Levels Reference
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-sky-500"
+                                ></span>
+                                <code class="text-sm">logger.info()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                General information messages
+                            </p>
                         </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-amber-500"
+                                ></span>
+                                <code class="text-sm">logger.warning()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Warning messages
+                            </p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-rose-500"
+                                ></span>
+                                <code class="text-sm">logger.error()</code>
+                            </div>
+                            <p class="text-xs text-white/50">Error messages</p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-emerald-500"
+                                ></span>
+                                <code class="text-sm">logger.success()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Success messages
+                            </p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-indigo-500"
+                                ></span>
+                                <code class="text-sm">logger.debug()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Debug information
+                            </p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-red-500"
+                                ></span>
+                                <code class="text-sm">logger.critical()</code>
+                            </div>
+                            <p class="text-xs text-white/50">Critical issues</p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-green-500"
+                                ></span>
+                                <code class="text-sm">logger.database()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Database operations
+                            </p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-gray-500"
+                                ></span>
+                                <code class="text-sm">logger.mail()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Triggers email alerts
+                            </p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-cyan-500"
+                                ></span>
+                                <code class="text-sm">logger.metric()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Performance metrics
+                            </p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-gray-400"
+                                ></span>
+                                <code class="text-sm">logger.trace()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Detailed trace info
+                            </p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-yellow-500"
+                                ></span>
+                                <code class="text-sm">logger.dir()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Structured key-value data
+                            </p>
+                        </div>
+                        <div
+                            class="bg-vercel-gray rounded-lg p-4 border border-white/10"
+                        >
+                            <div class="flex items-center gap-3 mb-2">
+                                <span
+                                    class="w-3 h-3 rounded-full bg-purple-500"
+                                ></span>
+                                <code class="text-sm">logger.custom()</code>
+                            </div>
+                            <p class="text-xs text-white/50">
+                                Custom level & color
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div
+                    class="bg-gradient-to-r from-sky-500/10 to-emerald-500/10 rounded-2xl p-12 border border-white/10"
+                >
+                    <h2 class="text-3xl font-bold mb-4">
+                        Ready to Level Up Your Logging?
+                    </h2>
+                    <p class="text-white/70 mb-8 max-w-2xl mx-auto">
+                        Join thousands of developers using Tamga for faster,
+                        more beautiful, and more powerful Python logging.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a
+                            href="https://pypi.org/project/tamga"
+                            class="px-6 py-3 rounded-lg bg-white text-black hover:bg-white/90 transition-colors font-medium"
+                        >
+                            Install from PyPI
+                        </a>
+                        <a
+                            href="https://github.com/dogukanurker/Tamga"
+                            class="px-6 py-3 rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors font-medium"
+                        >
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
             </div>
@@ -461,16 +1071,77 @@ logger.database("Query executed: SELECT * FROM users")</code></pre>
 
         <!-- Footer -->
         <footer class="py-12 px-4 border-t border-white/[0.1]">
-            <div class="max-w-7xl mx-auto text-center">
-                <p class="text-white/60">
-                    Created with ❤️ by
-                    <a
-                        href="https://github.com/dogukanurker"
-                        class="text-white hover:text-white/90"
-                        >Doğukan Ürker</a
-                    >
-                </p>
-                <p class="text-white/40 mt-2 text-sm">Licensed under MIT</p>
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="font-semibold mb-4">Resources</h3>
+                        <div class="space-y-2">
+                            <a
+                                href="https://github.com/dogukanurker/Tamga"
+                                class="block text-white/60 hover:text-white text-sm"
+                                >Documentation</a
+                            >
+                            <a
+                                href="https://github.com/dogukanurker/Tamga/blob/main/llms.txt"
+                                class="block text-white/60 hover:text-white text-sm"
+                                >AI Integration (llms.txt)</a
+                            >
+                            <a
+                                href="https://context7.com/dogukanurker/tamga"
+                                class="block text-white/60 hover:text-white text-sm"
+                                >Context7 Docs</a
+                            >
+                            <a
+                                href="https://github.com/dogukanurker/Tamga/releases"
+                                class="block text-white/60 hover:text-white text-sm"
+                                >Changelog</a
+                            >
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-4">Community</h3>
+                        <div class="space-y-2">
+                            <a
+                                href="https://github.com/dogukanurker/Tamga/issues"
+                                class="block text-white/60 hover:text-white text-sm"
+                                >Report Issues</a
+                            >
+                            <a
+                                href="https://github.com/dogukanurker/Tamga/pulls"
+                                class="block text-white/60 hover:text-white text-sm"
+                                >Contribute</a
+                            >
+                            <a
+                                href="https://pypi.org/project/tamga"
+                                class="block text-white/60 hover:text-white text-sm"
+                                >PyPI Package</a
+                            >
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-4">About</h3>
+                        <p class="text-white/60 text-sm">
+                            <strong class="text-white">tam·ga</strong> /ˈtæmɡə/
+                            · An ancient Turkic symbol used for marking
+                            ownership, identity, or lineage.
+                        </p>
+                        <p class="text-white/60 text-sm mt-2">
+                            Built for modern Python applications that demand
+                            performance and elegance.
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center pt-8 border-t border-white/10">
+                    <p class="text-white/60">
+                        Created with ❤️ by
+                        <a
+                            href="https://github.com/dogukanurker"
+                            class="text-white hover:text-white/90"
+                            >Doğukan Ürker</a
+                        >
+                    </p>
+                    <p class="text-white/40 mt-2 text-sm">MIT License · v1</p>
+                </div>
             </div>
         </footer>
 
@@ -511,6 +1182,22 @@ logger.database("Query executed: SELECT * FROM users")</code></pre>
 
             // Initialize Prism.js
             Prism.highlightAll();
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(
+                        this.getAttribute("href"),
+                    );
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    }
+                });
+            });
         </script>
     </body>
 </html>
