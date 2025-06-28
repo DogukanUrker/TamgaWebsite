@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tamga OG Image</title>
+        <meta name="viewport" content="width=1200, initial-scale=1.0" />
+        <meta name="robots" content="noindex" />
+        <style>
+            html,
+            body {
+                width: 1200px;
+                height: 630px;
+                margin: 0;
+                padding: 0;
+                background: #111;
+                color: #fff;
+                font-family: "Menlo", "Consolas", "Monaco", monospace;
+                overflow: hidden;
+            }
+            body {
+                width: 1200px;
+                height: 630px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .og-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+            }
+            .tamga-title {
+                font-size: 5rem;
+                font-weight: bold;
+                letter-spacing: -1px;
+                margin-bottom: 56px;
+                color: #fff;
+            }
+            .log-line {
+                font-size: 1.55rem;
+                background: #181818;
+                border-radius: 8px;
+                padding: 12px 32px;
+                margin-bottom: 18px;
+                width: 450px;
+                box-shadow: 0 2px 16px #0006;
+                border-left: 5px solid #38bdf8;
+                color: #e5e5e5;
+                font-family: "Menlo", "Consolas", "Monaco", monospace;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            .log-line.success {
+                border-left-color: #10b981;
+                color: #d1fae5;
+            }
+            .log-line.warn {
+                border-left-color: #fbbf24;
+                color: #fde68a;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="og-content">
+            <div class="tamga-title">Tamga</div>
+            <div class="log-line">log.info("Permission Checked")</div>
+            <div class="log-line warn">log.warn("Quota almost full")</div>
+            <div class="log-line success">log.success("User retrived")</div>
+        </div>
+    </body>
+</html>
