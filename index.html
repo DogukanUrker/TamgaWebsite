@@ -284,8 +284,8 @@
                             Multiple Outputs
                         </h3>
                         <p class="text-white/60 text-sm">
-                            Console, File, JSON, SQLite, MongoDB, API endpoints,
-                            and Email notifications.
+                            Console, File, JSON, SQLite, MongoDB, and 80+
+                            notification services via Apprise.
                         </p>
                     </div>
                     <div
@@ -504,10 +504,10 @@
                         <div class="relative group">
                             <pre
                                 class="rounded-xl bg-vercel-gray border border-white/[0.1] p-4 overflow-x-auto"
-                            ><code class="language-bash">pip install tamga              # Basic installation
-pip install tamga[mongo]       # With MongoDB support
-pip install tamga[api]         # With API logging
-pip install tamga[full]        # All features</code></pre>
+                            ><code class="language-bash">pip install tamga                  # Basic installation
+pip install tamga[mongo]           # With MongoDB support
+pip install tamga[notifications]   # With notification support
+pip install tamga[all]             # All features</code></pre>
                         </div>
                         <div class="relative group">
                             <pre
@@ -553,11 +553,11 @@ logger.success("Task completed!")</code></pre>
                         MongoDB
                     </button>
                     <button
-                        onclick="showTab('email')"
+                        onclick="showTab('notifications')"
                         class="tab-btn px-4 py-2 text-sm rounded-lg bg-vercel-gray border border-white/[0.1] hover:border-white/[0.2] transition-colors"
-                        data-tab="email"
+                        data-tab="notifications"
                     >
-                        Email Alerts
+                        Notifications
                     </button>
                     <button
                         onclick="showTab('production')"
@@ -600,7 +600,7 @@ logger.critical("System overload!")           # Red
 logger.database("Query executed: SELECT *")   # Green
 logger.metric("Response time: 125ms")         # Cyan
 logger.trace("Entering function: process()")  # Gray
-logger.mail("Payment received: $99.99")       # Triggers email if configured
+logger.notify("Payment received: $99.99")     # Purple - sends notification
 
 # Custom logging with your own color
 logger.custom("Deploy completed", "DEPLOY", "purple")
@@ -759,49 +759,71 @@ logger.error("Payment processing failed")
                         </div>
                     </div>
 
-                    <div id="email" class="tab-content hidden">
+                    <div id="notifications" class="tab-content hidden">
                         <div class="relative group">
                             <button
-                                onclick="copyCode('email-code')"
+                                onclick="copyCode('notifications-code')"
                                 class="absolute right-4 top-4 px-3 py-1.5 text-sm rounded-lg bg-white/10 hover:bg-white/20 transition-colors opacity-0 group-hover:opacity-100"
                             >
                                 Copy
                             </button>
                             <pre
                                 class="rounded-xl bg-vercel-gray border border-white/[0.1] p-6 overflow-x-auto"
-                            ><code class="language-python" id="email-code"># Email Alerts Configuration
+                            ><code class="language-python" id="notifications-code"># Multi-Service Notifications via Apprise
 from tamga import Tamga
 import os
 
 logger = Tamga(
-    # Email configuration
-    sendMail=True,
-    smtpServer="smtp.gmail.com",
-    smtpPort=587,
-    smtpMail=os.getenv("SMTP_EMAIL"),
-    smtpPassword=os.getenv("SMTP_PASSWORD"),
-    smtpReceivers=["alerts@company.com", "oncall@company.com"],
+    # Configure notification services (80+ supported)
+    notifyServices=[
+        # Discord
+        "discord://webhook_id/webhook_token",
 
-    # Which levels trigger emails
-    mailLevels=["CRITICAL", "ERROR", "MAIL"],
+        # Slack
+        "slack://tokenA/tokenB/tokenC/#channel",
+
+        # Email via SMTP
+        "mailto://user:pass@smtp.gmail.com:587/?to=alerts@company.com",
+
+        # SMS via Twilio
+        "twilio://SID:Token@+1234567890/+0987654321",
+
+        # Telegram
+        "tgram://bot_token/chat_id",
+
+        # Microsoft Teams, PushOver, Matrix, and many more...
+    ],
+
+    # Which log levels trigger notifications
+    notifyLevels=["CRITICAL", "ERROR", "NOTIFY"],
+
+    # Notification title template
+    notifyTitle="🚨 {appname} Alert: {level}",
+
+    # Format: text, markdown, or html
+    notifyFormat="markdown",
 )
 
-# These trigger email notifications (async)
+# These trigger notifications (async)
 logger.critical("Database server is down!")
 logger.error("Failed to process payment for user_123")
-logger.mail("New premium subscription: $299/month")
+logger.notify("New premium subscription: $299/month")
 
-# Using mail() for important business events
-logger.mail("Large order placed: $10,000")
-logger.mail("Suspicious login detected from new location")
-logger.mail("Daily backup completed successfully")
+# Advanced usage
+logger.notify(
+    "Large order placed: $10,000",
+    title="💰 Sales Alert",  # Custom title
+)
 
-# These DON'T trigger emails (not in mailLevels)
+# Send to specific services (overrides defaults)
+logger.notify(
+    "Urgent: Production server down",
+    services=["discord://emergency/webhook", "twilio://..."]
+)
+
+# These DON'T trigger notifications (not in notifyLevels)
 logger.warning("Cache miss rate increasing")
-logger.info("Regular operation message")
-
-# Emails are sent asynchronously with beautiful HTML templates
-# Including syntax highlighting and timestamp information</code></pre>
+logger.info("Regular operation message")</code></pre>
                         </div>
                     </div>
 
@@ -846,18 +868,15 @@ logger = Tamga(
     logToMongo=bool(os.getenv("MONGO_URI")),
     mongoURI=os.getenv("MONGO_URI"),
 
-    # API logging (e.g., to Elasticsearch)
-    logToAPI=bool(os.getenv("LOG_API_URL")),
-    apiURL=os.getenv("LOG_API_URL"),
-
-    # Critical alerts
-    sendMail=bool(os.getenv("SMTP_SERVER")),
-    smtpServer=os.getenv("SMTP_SERVER"),
-    smtpPort=587,
-    smtpMail=os.getenv("SMTP_USER"),
-    smtpPassword=os.getenv("SMTP_PASS"),
-    smtpReceivers=["alerts@company.com"],
-    mailLevels=["CRITICAL", "MAIL"],
+    # Multi-service notifications
+    notifyServices=[
+        os.getenv("DISCORD_WEBHOOK"),
+        os.getenv("SLACK_WEBHOOK"),
+        f"mailto://{os.getenv('SMTP_USER')}:{os.getenv('SMTP_PASS')}@smtp.gmail.com:587/?to=alerts@company.com",
+    ] if os.getenv("NOTIFICATIONS_ENABLED") else [],
+    notifyLevels=["CRITICAL", "NOTIFY"],
+    notifyTitle="{appname} Alert: {level}",
+    notifyFormat="markdown",
 )
 
 # Application lifecycle
@@ -871,6 +890,9 @@ try:
 
     # Your application code
     logger.success("All services initialized")
+
+    # Important business event - sends notification
+    logger.notify("Service deployed to production")
 
 except Exception as e:
     logger.critical(f"Fatal startup error: {str(e)}")
@@ -982,12 +1004,12 @@ finally:
                         >
                             <div class="flex items-center gap-3 mb-2">
                                 <span
-                                    class="w-3 h-3 rounded-full bg-gray-500"
+                                    class="w-3 h-3 rounded-full bg-purple-500"
                                 ></span>
-                                <code class="text-sm">logger.mail()</code>
+                                <code class="text-sm">logger.notify()</code>
                             </div>
                             <p class="text-xs text-white/50">
-                                Triggers email alerts
+                                Send notifications
                             </p>
                         </div>
                         <div
@@ -1034,7 +1056,7 @@ finally:
                         >
                             <div class="flex items-center gap-3 mb-2">
                                 <span
-                                    class="w-3 h-3 rounded-full bg-purple-500"
+                                    class="w-3 h-3 rounded-full bg-gray-500"
                                 ></span>
                                 <code class="text-sm">logger.custom()</code>
                             </div>
