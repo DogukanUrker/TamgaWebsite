@@ -584,10 +584,10 @@ logger.success("Task completed!")</code></pre>
 from tamga import Tamga
 
 logger = Tamga(
-    logToFile=True,
-    logToJSON=True,
-    logToConsole=True,
-    bufferSize=50,  # Buffer 50 logs before writing
+    log_to_file=True,
+    log_to_json=True,
+    log_to_console=True,
+    buffer_size=50,  # Buffer 50 logs before writing
 )
 
 # All available log levels
@@ -680,9 +680,9 @@ from tamga import Tamga
 
 # Optimize for maximum throughput
 logger = Tamga(
-    logToFile=True,
-    logToConsole=False,    # Disable console for much faster performance
-    bufferSize=1000,       # Large buffer for batch operations
+    log_to_file=True,
+    log_to_console=False,    # Disable console for much faster performance
+    buffer_size=1000,       # Large buffer for batch operations
 )
 
 # Process large dataset efficiently
@@ -732,17 +732,17 @@ import os
 
 logger = Tamga(
     # MongoDB with async support
-    logToMongo=True,
-    mongoURI=os.getenv("MONGO_URI"),
-    mongoDatabaseName="logs_db",
-    mongoCollectionName="application_logs",
+    log_to_mongo=True,
+    mongo_uri=os.getenv("MONGO_URI"),
+    mongo_database_name="logs_db",
+    mongo_collection_name="application_logs",
 
     # Also log to files
-    logToFile=True,
-    logToJSON=True,
+    log_to_file=True,
+    log_to_json=True,
 
     # Performance settings
-    bufferSize=100,
+    buffer_size=100,
 )
 
 # MongoDB operations are non-blocking
@@ -775,7 +775,7 @@ import os
 
 logger = Tamga(
     # Configure notification services (80+ supported)
-    notifyServices=[
+    notify_services=[
         # Discord
         "discord://webhook_id/webhook_token",
 
@@ -795,13 +795,13 @@ logger = Tamga(
     ],
 
     # Which log levels trigger notifications
-    notifyLevels=["CRITICAL", "ERROR", "NOTIFY"],
+    notify_levels=["CRITICAL", "ERROR", "NOTIFY"],
 
     # Notification title template
-    notifyTitle="🚨 {appname} Alert: {level}",
+    notify_title="🚨 {appname} Alert: {level}",
 
     # Format: text, markdown, or html
-    notifyFormat="markdown",
+    notify_format="markdown",
 )
 
 # These trigger notifications (async)
@@ -843,40 +843,40 @@ import os
 
 logger = Tamga(
     # Console only in development
-    logToConsole=os.getenv("ENV") != "production",
+    log_to_console=os.getenv("ENV") != "production",
 
     # File outputs with rotation
-    logToFile=True,
-    logFile="logs/app.log",
-    maxLogSize=50,          # Rotate at 50MB
-    enableBackup=True,      # Keep backups
+    log_to_file=True,
+    log_file="logs/app.log",
+    max_log_size=50,          # Rotate at 50MB
+    enable_backup=True,      # Keep backups
 
     # JSON for log aggregation
-    logToJSON=True,
-    logJSON="logs/app.json",
-    maxJsonSize=50,
+    log_to_json=True,
+    log_json="logs/app.json",
+    max_json_size=50,
 
     # Database logging
-    logToSQL=True,
-    logSQL="logs/app.db",
-    maxSqlSize=100,         # 100MB for SQL
+    log_to_sql=True,
+    log_sql="logs/app.db",
+    max_sql_size=100,         # 100MB for SQL
 
     # Performance tuning
-    bufferSize=200 if os.getenv("ENV") == "production" else 10,
+    buffer_size=200 if os.getenv("ENV") == "production" else 10,
 
     # Centralized logging
-    logToMongo=bool(os.getenv("MONGO_URI")),
-    mongoURI=os.getenv("MONGO_URI"),
+    log_to_mongo=bool(os.getenv("MONGO_URI")),
+    mongo_uri=os.getenv("MONGO_URI"),
 
     # Multi-service notifications
-    notifyServices=[
+    notify_services=[
         os.getenv("DISCORD_WEBHOOK"),
         os.getenv("SLACK_WEBHOOK"),
         f"mailto://{os.getenv('SMTP_USER')}:{os.getenv('SMTP_PASS')}@smtp.gmail.com:587/?to=alerts@company.com",
     ] if os.getenv("NOTIFICATIONS_ENABLED") else [],
-    notifyLevels=["CRITICAL", "NOTIFY"],
-    notifyTitle="{appname} Alert: {level}",
-    notifyFormat="markdown",
+    notify_levels=["CRITICAL", "NOTIFY"],
+    notify_title="{appname} Alert: {level}",
+    notify_format="markdown",
 )
 
 # Application lifecycle
