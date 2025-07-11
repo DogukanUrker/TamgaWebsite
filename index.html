@@ -584,9 +584,9 @@ logger.success("Task completed!")</code></pre>
 from tamga import Tamga
 
 logger = Tamga(
-    log_to_file=True,
-    log_to_json=True,
-    log_to_console=True,
+    file_output=True,
+    json_output=True,
+    console_output=True,
     buffer_size=50,  # Buffer 50 logs before writing
 )
 
@@ -680,8 +680,8 @@ from tamga import Tamga
 
 # Optimize for maximum throughput
 logger = Tamga(
-    log_to_file=True,
-    log_to_console=False,    # Disable console for much faster performance
+    file_output=True,
+    console_output=False,    # Disable console for much faster performance
     buffer_size=1000,       # Large buffer for batch operations
 )
 
@@ -732,14 +732,14 @@ import os
 
 logger = Tamga(
     # MongoDB with async support
-    log_to_mongo=True,
+    mongo_output=True,
     mongo_uri=os.getenv("MONGO_URI"),
     mongo_database_name="logs_db",
     mongo_collection_name="application_logs",
 
     # Also log to files
-    log_to_file=True,
-    log_to_json=True,
+    file_output=True,
+    json_output=True,
 
     # Performance settings
     buffer_size=100,
@@ -843,29 +843,29 @@ import os
 
 logger = Tamga(
     # Console only in development
-    log_to_console=os.getenv("ENV") != "production",
+    console_output=os.getenv("ENV") != "production",
 
     # File outputs with rotation
-    log_to_file=True,
-    log_file="logs/app.log",
-    max_log_size=50,          # Rotate at 50MB
+    file_output=True,
+    file_path="logs/app.log",
+    max_file_size_mb=50,          # Rotate at 50MB
     enable_backup=True,      # Keep backups
 
     # JSON for log aggregation
-    log_to_json=True,
-    log_json="logs/app.json",
-    max_json_size=50,
+    json_output=True,
+    file_path="logs/app.json",
+    max_json_size_mb=50,
 
     # Database logging
-    log_to_sql=True,
-    log_sql="logs/app.db",
-    max_sql_size=100,         # 100MB for SQL
+    sql_output=True,
+    sql_path="logs/app.db",
+    max_sql_size_mb=100,         # 100MB for SQL
 
     # Performance tuning
     buffer_size=200 if os.getenv("ENV") == "production" else 10,
 
     # Centralized logging
-    log_to_mongo=bool(os.getenv("MONGO_URI")),
+    mongo_output=bool(os.getenv("MONGO_URI")),
     mongo_uri=os.getenv("MONGO_URI"),
 
     # Multi-service notifications
